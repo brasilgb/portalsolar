@@ -8,7 +8,7 @@ export default function Home() {
         <ul className="flex justify-center gap-4 mt-4">
           <li><a className="text-base text-gray-600 hover:underline hover:text-gray-800 font-semibold" href="/">Portal</a></li>
           <li><a className="text-base text-gray-600 hover:underline hover:text-gray-800 font-semibold" href="/apptv">AppTV</a></li>
-          <li><a className="text-base text-gray-600 hover:underline hover:text-gray-800 font-semibold" href="pagamentos">Pagamentos</a></li>
+          <li><a className="text-base text-gray-600 hover:underline hover:text-gray-800 font-semibold" href="/gerencial">Gerencial</a></li>
         </ul>
       </div>
     </main>
