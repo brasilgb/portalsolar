@@ -21,10 +21,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={`${roboto.variable}`}>
-                <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 md:px-0 px-4">
+                <main className="flex min-h-screen flex-col items-center justify-center bg-blue-light">
                     <Providers>
                         <Header />
-                        <div className="flex-grow py-8">
+                        <div className="flex-grow py-8 w-full px-4">
                             {children}
                         </div>
                         <Footer />
