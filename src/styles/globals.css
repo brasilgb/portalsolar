@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .btn-login {
+        @apply inline-flex justify-center rounded-md bg-blue-primary hover:bg-blue-secundary px-5 py-2 mt-5 font-medium text-sm text-gray-50 transition-colors uppercase border-2 border-blue-secundary hover:border-blue-primary shadow;
+    }
+    .error-message {
+        @apply text-sm p-0.5 text-red-500;
+    }
+    .label-form {
+        @apply text-base text-gray-500 font-medium;
+    }
+    .div-input {
+        @apply rounded-md px-9 bg-gray-50 text-base text-gray-500 border border-white shadow;
+    }
+    .input-form {
+        @apply text-base py-2 outline-0 w-full bg-gray-50;
+    }
+}
