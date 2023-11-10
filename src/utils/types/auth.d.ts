@@ -7,6 +7,7 @@ export type TUser = {
   export type AuthUser = {
     token: string;
     user: TUser;
+    success: string;
   };
   
   export type TLogin = {

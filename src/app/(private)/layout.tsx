@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import '@/styles/globals.css';
 import { Providers } from "@/app/providers";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -20,11 +21,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={`${roboto.variable}`}>
-                <Providers>
-                    <Header />
-                    {children}
-
-                </Providers>
+                <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 md:px-0 px-4">
+                    <Providers>
+                        <Header />
+                        <div className="flex-grow py-8">
+                            {children}
+                        </div>
+                        <Footer />
+                    </Providers>
+                </main>
             </body>
         </html>
     );
