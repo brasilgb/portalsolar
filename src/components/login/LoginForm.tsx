@@ -1,13 +1,14 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { IoEye, IoEyeOff, IoLockClosed, IoPerson } from 'react-icons/io5'
 import { useRouter } from "next/navigation";
-import { TLogin } from "@/utils/types/auth";
-import { useAuth } from "@/hooks/userAuth";
+import { useAuthContext } from "@/contexts/AuthContext";
+import { sign } from "crypto";
+
 export const LoginValidate = z.object({
     code: z.string().min(1, 'Digite o usuário'),
     password: z.string().min(1, 'Digite a senha'),
@@ -15,8 +16,8 @@ export const LoginValidate = z.object({
 type FormData = z.infer<typeof LoginValidate>;
 
 const LoginForm = () => {
+    const { signIn } = useAuthContext();
     const router = useRouter();
-    const {login} = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const { handleSubmit, register, formState: { errors } } = useForm<FormData>({
         defaultValues: {
@@ -27,24 +28,8 @@ const LoginForm = () => {
         resolver: zodResolver(LoginValidate)
     });
 
-    const handleLogin = (values: TLogin) => {
-
-        login(values)
-            .then((data) => {
-                const { success, message } = data;
-                if (success) {
-                    // add your code for post successful login here
-                    setTimeout(() => {
-                        router.push("/");
-                    }, 1000);
-                } 
-                else 
-                console.log(message);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
+    const handleLogin = async (values: any) => {
+        await signIn(values);
     }
 
     return (

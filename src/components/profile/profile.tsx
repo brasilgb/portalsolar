@@ -1,11 +1,11 @@
 'use client'
-import { useUser } from "@/hooks/useUser";
+import { useAuthContext } from "@/contexts/AuthContext";
 import { useState } from "react";
 import { IoChevronDown, IoPerson } from "react-icons/io5";
 
 const Profile = () => {
+    const { user, signOut } = useAuthContext();
     const [showMenu, setShowMenu] = useState(false);
-    const { user } = useUser();
 
     return (
         <>
@@ -26,8 +26,18 @@ const Profile = () => {
                 {showMenu &&
                     <div className="absolute right-0 top-10 w-80 bg-gray-middle border border-white shadow-lg rounded p-3">
                         <p className="text-sm font-mono">
-                            {JSON.stringify(user?.success, undefined, 4)}
+                            
                         </p>
+                        <ul>
+                            <li>{JSON.stringify(user?.token)}</li>
+                            <li>
+                                <button
+                                onClick={() => signOut()}
+                                >
+                                    Sair
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 }
 

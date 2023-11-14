@@ -1,46 +1,65 @@
 "use client";
-import { ReactNode, createContext, useEffect, useState } from "react";
-import { AuthUser } from "@/utils/types/auth";
-import useCookie from "@/hooks/useCookies";
+import servicelogin from "@/libs/servicelogin";
+import { useRouter } from "next/navigation";
+import React, { ReactNode, createContext, useCallback, useContext, useEffect, useState } from "react";
 
-interface TAuthContext {
-  user: AuthUser | null;
-  setUser: (user: AuthUser | null) => void;
-}
+const AuthContext = createContext({} as any);
 
-export const AuthContext = createContext<TAuthContext>({
-  user: null,
-  setUser: () => {},
-});
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
 
-interface Props {
-  children: ReactNode;
-}
-
-export const AuthProvider = ({ children }: Props) => {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const { getCookie } = useCookie();
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    if (!user) {
-      let existingUser = null;
-      const getFromCookie = async () => (existingUser = getCookie("user"));
-      getFromCookie();
-
-      if (existingUser) {
-        try {
-          setUser(JSON.parse(existingUser));
-        } catch (e) {
-          console.log(e);
-        }
+    const loadStorage = async () => {
+      const recoveredUser = localStorage.getItem('Auth_user');
+      if (recoveredUser) {
+        setUser(JSON.parse(recoveredUser));
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    };
+    loadStorage();
   }, []);
 
+  const signIn = useCallback(async (data: any) => {
+    console.log(data);
+    await servicelogin.post('(LOG_USU_VALIDATE_LOGIN)', data)
+      .then((response) => {
+        const { success, userKey, message } = response.data.login;
+        if (!success) {
+          return message;
+        }
+        let userData = {
+          token: userKey,
+        };
+        localStorage.setItem(
+          'Auth_user',
+          JSON.stringify(userData),
+        );
+        setUser(userData);
+        router.push('/');
+      }).catch((err) => {
+        console.log(err);
+      })
+  }, []);
+
+  const signOut = () => {
+    localStorage.removeItem('Auth_user');
+    setUser(null);
+    router.push('/login');
+  }
+  
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{
+      authenticated: !!user,
+      user,
+      signIn,
+      signOut,
+      loading,
+      setLoading
+    }}>
       {children}
     </AuthContext.Provider>
   );
 };
+export const useAuthContext = () => useContext(AuthContext);

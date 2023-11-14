@@ -10,17 +10,17 @@ const servicelogin = axios.create({
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
-}
+  }
 });
 
 servicelogin.interceptors.request.use(async (request) => {
   // Produção
-  request.baseURL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
-  BASE_URL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
+  // request.baseURL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
+  // BASE_URL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
 
-    // Testes
-  // request.baseURL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
-  // BASE_URL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
+  // Testes
+  request.baseURL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
+  BASE_URL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
 
   requestCustom = request;
   data = request.data;
@@ -33,9 +33,9 @@ servicelogin.interceptors.response.use(
   async _error => {
     console.log('Abrindo sessão com o servidor novamente');
 
-    if (requestCustom.url.includes('(LOG_USU_CLOSE_CONNECTION)')) {
-      return;
-    }
+    // if (requestCustom.url.includes('(LOG_USU_CLOSE_CONNECTION)')) {
+    //   return;
+    // }
 
     const axiosNew = axios.create({
       baseURL: BASE_URL,
@@ -43,7 +43,7 @@ servicelogin.interceptors.response.use(
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-    }
+      }
     });
 
     let session = await axiosNew
@@ -53,7 +53,7 @@ servicelogin.interceptors.response.use(
         return {
           status: 404,
           success: false,
-          message: 'Não foi possível conectar ao servidor'
+          message: 'Não foi possível conectar ao servidor 1'
         };
       });
 
@@ -61,7 +61,7 @@ servicelogin.interceptors.response.use(
       session = {
         status: 404,
         success: false,
-        message: 'Não foi possível conectar ao servidor',
+        message: 'Não foi possível conectar ao servidor 2',
       };
 
       return session;
@@ -79,7 +79,7 @@ servicelogin.interceptors.response.use(
       session = {
         status: 404,
         success: false,
-        message: 'Não foi possível conectar ao servidor'
+        message: 'Não foi possível conectar ao servidor 3'
       };
       return session;
     }
