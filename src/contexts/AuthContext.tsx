@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }).catch((err) => {
         console.log(err);
       })
-  }, []);
+  }, [router]);
 
   const signOut = () => {
     localStorage.removeItem('Auth_user');

@@ -8,7 +8,7 @@ const AppLoading = () => {
         setTimeout(() => {
             router.push('/');
         }, 300)
-    }, [])
+    }, [router])
 
 
 
