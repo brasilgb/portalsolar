@@ -15,12 +15,12 @@ const servicelogin = axios.create({
 
 servicelogin.interceptors.request.use(async (request) => {
   // Produção
-  // request.baseURL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
-  // BASE_URL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
+  request.baseURL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
+  BASE_URL = `https://services.gruposolar.com.br:8086/servicesgruposolar/servlet/isCobol`;
 
   // Testes
-  request.baseURL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
-  BASE_URL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
+  // request.baseURL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
+  // BASE_URL = `https://172.16.1.67:9091/servicesgruposolar/servlet/isCobol`;
 
   requestCustom = request;
   data = request.data;
