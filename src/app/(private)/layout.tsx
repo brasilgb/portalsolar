@@ -1,5 +1,4 @@
 'use client'
-
 import { Roboto } from 'next/font/google';
 import '@/styles/globals.css';
 import Header from "@/components/header";
@@ -25,24 +24,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const pathname = usePathname();
     const isPublicPage = checkIsPublicRoute(pathname!);
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className={`${roboto.variable}`}>
-                <main className="flex min-h-screen flex-col items-center justify-center bg-blue-light">
+                <div>
                     <AuthProvider>
                         {isPublicPage && children}
                         {!isPublicPage && (
                             <PrivateRoute>
-                                <Header />
-                                <div className="flex-grow py-8 w-full px-4">
-                                    {children}
+                                <div className="flex min-h-screen flex-col items-center justify-center bg-blue-light">
+                                    <Header />
+                                    <div className="flex-grow py-8 w-full px-4">
+                                        {children}
+                                    </div>
+                                    <Footer />
                                 </div>
-                                <Footer />
                             </PrivateRoute>
                         )}
-                        
                     </AuthProvider>
-                </main>
+                </div>
             </body>
-        </html>
+        </html >
     );
 }

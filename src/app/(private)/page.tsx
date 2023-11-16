@@ -5,9 +5,10 @@ const Home = () => {
 
   return (
     <>
-    <div>
-    <p>My cookie value: {'user'}</p>
-    </div>
+      <div>
+        <p>My cookie value: {'user'}</p>
+      </div>
+
       <div className="md:container m-auto md:grid md:grid-cols-5 md:gap-8 gap-4 flex flex-col justify-center">
         <LinkApp
           bgColor="bg-gray-light"

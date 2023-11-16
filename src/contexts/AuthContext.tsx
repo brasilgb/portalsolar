@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const loadStorage = async () => {
-      const recoveredUser = localStorage.getItem('Auth_user');
+      const recoveredUser = localStorage.getItem('portal_user');
       if (recoveredUser) {
         setUser(JSON.parse(recoveredUser));
       }
@@ -33,22 +33,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           token: userKey,
         };
         localStorage.setItem(
-          'Auth_user',
+          'portal_user',
           JSON.stringify(userData),
         );
         setUser(userData);
-        router.push('/');
+        return router.push('/');
       }).catch((err) => {
         console.log(err);
       })
   }, [router]);
 
   const signOut = () => {
-    localStorage.removeItem('Auth_user');
+    localStorage.removeItem('portal_user');
     setUser(null);
     router.push('/login');
   }
-  
+
   return (
     <AuthContext.Provider value={{
       authenticated: !!user,

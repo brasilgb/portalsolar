@@ -33,7 +33,7 @@ const LoginForm = () => {
     }
 
     return (
-        <>
+        <div>
             <div className="px-4 my-3">
                 <div className="w-[40%] m-auto mt-8">
                     <Image
@@ -104,7 +104,7 @@ const LoginForm = () => {
                     </div>
                 </form>
             </div>
-        </>
+        </div>
     );
 };
 
