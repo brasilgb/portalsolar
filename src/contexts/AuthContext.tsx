@@ -1,6 +1,5 @@
 "use client";
 import servicelogin from "@/libs/servicelogin";
-import { log } from "console";
 import { usePathname, useRouter } from "next/navigation";
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 
@@ -55,7 +54,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signOut = () => {
     localStorage.removeItem('portal_user');
     setUser(null);
-    router.push('http://localhost:3000/login');
+    router.push('/login');
   }
 
   return (
