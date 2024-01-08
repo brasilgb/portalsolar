@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signOut = () => {
     localStorage.removeItem('portal_user');
     setUser(null);
-    router.push('/login');
+    router.push('http://localhost:3000/login');
   }
 
   return (

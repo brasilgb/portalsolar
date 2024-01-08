@@ -49,14 +49,13 @@ const Profile = () => {
                         <span className="ml-1">{userData.userName}</span>
                     </span>
                     <span className="w-full border-b border-gray-200"></span>
-                    <Link
+                    <button
                         className="text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
-                        href="#"
                         onClick={signOut}
                     >
                         <IoExit color="#6d6a6a" size={20} />
                         <span className="ml-1">Sair</span>
-                    </Link>
+                    </button>
 
                 </div>
             </div>
