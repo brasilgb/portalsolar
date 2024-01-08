@@ -1,15 +1,18 @@
 "use client";
 import servicelogin from "@/libs/servicelogin";
-import { useRouter } from "next/navigation";
-import React, { ReactNode, createContext, useCallback, useContext, useEffect, useState } from "react";
+import { log } from "console";
+import { usePathname, useRouter } from "next/navigation";
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext({} as any);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [userNotExist, setUserNotExist] = useState<string>('');
 
   useEffect(() => {
     const loadStorage = async () => {
@@ -22,15 +25,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const signIn = useCallback(async (data: any) => {
-    console.log(data);
-    await servicelogin.post('(LOG_USU_VALIDATE_LOGIN)', data)
+    setLoading(true);
+    await servicelogin.post('(LOG_USU_VALIDATE_USER)', data)
       .then((response) => {
-        const { success, userKey, message } = response.data.login;
+        const { success, userKey, userName, message, programs, folders } = response.data.user;
+        setLoading(false);
         if (!success) {
-          return message;
+          setUserNotExist(message);
+          return;
         }
+       
         let userData = {
+          userName: userName,
           token: userKey,
+          programs: programs,
+          folders: folders,
         };
         localStorage.setItem(
           'portal_user',
@@ -56,7 +65,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       signIn,
       signOut,
       loading,
-      setLoading
+      setLoading,
+      userNotExist
     }}>
       {children}
     </AuthContext.Provider>

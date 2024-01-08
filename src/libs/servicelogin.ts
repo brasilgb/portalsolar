@@ -24,7 +24,6 @@ servicelogin.interceptors.request.use(async (request) => {
 
   requestCustom = request;
   data = request.data;
-
   return request;
 });
 

@@ -12,7 +12,7 @@ const LinkApp = ({ bgColor, text, textColor, title, titleColor }: LinkProps) => 
     return (
         <Link
             className={`${bgColor} p-4 rounded shadow border-2 border-white`}
-            href={"/"}
+            href={`/${title}`}
         >
             <h1 className={`${titleColor} text-xl uppercase text-center font-semibold mb-2`}>{title}</h1>
             <p className={`${textColor} text-base text-center font-medium`}>{text}</p>
