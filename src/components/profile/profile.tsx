@@ -52,7 +52,7 @@ const Profile = () => {
                     <Link
                         className="text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
                         href="#"
-                        onClick={() => signOut()}
+                        onClick={signOut}
                     >
                         <IoExit color="#6d6a6a" size={20} />
                         <span className="ml-1">Sair</span>
