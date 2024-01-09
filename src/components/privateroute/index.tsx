@@ -1,7 +1,6 @@
 'use client'
 import React, { ReactNode, useEffect } from 'react';
-
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { checkUserAuthenticated } from "@/functions/check-user-authenticated";
 import { APP_ROUTES } from "@/app/constants/app-routes";
 
@@ -11,6 +10,7 @@ interface PrivateRouteProps {
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
     const router = useRouter();
+    const pathname = usePathname();
     const isUserAutenticated = checkUserAuthenticated();
 
     useEffect(() => {
@@ -20,10 +20,10 @@ const PrivateRoute = ({ children }: PrivateRouteProps) => {
     }, [isUserAutenticated, router]);
 
     return (
-        <>
+        <div>
             {!isUserAutenticated && null}
             {isUserAutenticated && children}
-        </>
+        </div>
     );
 };
 
