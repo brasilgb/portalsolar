@@ -22,7 +22,7 @@ const PrivateRoute = ({ children }: PrivateRouteProps) => {
 
     return (
         <div>
-            {!isUserAutenticated &&  !isUrlAccess && null}
+            {!isUserAutenticated && null}
             {isUserAutenticated && children}
         </div>
     );
