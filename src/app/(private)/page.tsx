@@ -16,7 +16,7 @@ const Home = () => {
       }
     };
     loadStorage();
-  }, [localStorage]);
+  }, []);
 
   useEffect(() => {
     let numfolder = userData?.folders?.length
@@ -24,7 +24,7 @@ const Home = () => {
       let path = userData?.folders[0].path;
       router.push(`/${path}`);
     }
-  }, [userData]);
+  }, [userData, router]);
 
   return (
     <div className="md:container m-auto md:grid md:grid-cols-5 md:gap-8 gap-4 flex flex-col justify-center">
