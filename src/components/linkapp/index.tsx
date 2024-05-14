@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { usePathname } from "next/navigation";
 import React from 'react'
 
 interface LinkProps {
@@ -9,6 +10,7 @@ interface LinkProps {
     textColor?: string;
 }
 const LinkApp = ({ bgColor, text, textColor, title, titleColor }: LinkProps) => {
+   
     return (
         <Link
             className={`${bgColor} p-4 rounded shadow border-2 border-white`}
