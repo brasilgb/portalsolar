@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setLoading(true);
     await servicelogin.post('(LOG_USU_VALIDATE_USER)', data)
       .then((response) => {
-        const { success, userKey, userName, message, programs, folders } = response.data.user;
+        const { success, userKey, userName, message, programs, folders, granja } = response.data.user;
         setLoading(false);
         if (!success) {
           setUserNotExist(message);
@@ -40,6 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           token: userKey,
           programs: programs,
           folders: folders,
+          granja: granja,
         };
         localStorage.setItem(
           'portal_user',
