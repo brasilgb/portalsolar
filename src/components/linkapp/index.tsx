@@ -2,6 +2,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation";
 import React from 'react'
 import { FaRegChartBar } from "react-icons/fa";
+import { GiChicken, GiRooster } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { PiNotePencilFill } from "react-icons/pi";
 
@@ -17,6 +18,9 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'ecommerce': text = 'Operações relacionadas ao ecommerce';
                 break;
             case 'assinatura': text = 'Acompanhamento das assinaturas de contratos';
+            break;
+            case 'integrado': text = 'Controle de reporte diário, extrato e remuneração';
+
         };
         return text;
     };
@@ -28,6 +32,8 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'ecommerce': text = <MdOutlineShoppingCart size={70} color="#b4994e" />;
                 break;
             case 'assinatura': text = <PiNotePencilFill size={70} color="#4f8cb4" />;
+            break;
+            case 'integrado': text = <GiRooster size={70} color="#cc8903" />;
         };
         return text;
     };
@@ -48,12 +54,17 @@ const LinkApp = ({ title }: LinkProps) => {
                 "title": "text-red-500",
                 "description": "text-gray-600"
             };
+            break;
+            case 'integrado': text = {
+                "title": " text-orange-600",
+                "description": "text-gray-600"
+            };
         };
         return text;
     };
 
     return (
-        <Link className="w-full sm:max-w-md px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300 duration-500 hover:scale-105 hover:shadow-lg"
+        <Link className="w-full sm:max-w-md text-orange-600 px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300 duration-500 hover:scale-105 hover:shadow-lg"
             href={`/${title}`}
         >
             <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{title}</h1>
