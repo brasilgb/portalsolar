@@ -53,7 +53,7 @@ const LinkApp = ({ title }: LinkProps) => {
     };
 
     return (
-        <Link className="w-full sm:max-w-md px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300"
+        <Link className="w-full sm:max-w-md px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300 duration-500 hover:scale-105 hover:shadow-lg"
             href={`/${title}`}
         >
             <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{title}</h1>
