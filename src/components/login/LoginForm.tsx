@@ -116,9 +116,8 @@ const LoginForm = () => {
                     <div className="left-0 text-sm mt-2 bg-gray-50 p-2 rounded shadow border border-gray-300 text-gray-500 z-40">
                         <div className="flex justify-end">
                             <IoClose className="cursor-pointer" onClick={() => setResetPassword(false)} /></div>
-                        <h1>Para recuperar sua senha entre em contato com o suporte do setor de TI Grupo Solar.</h1>
+                        <h1>Para recuperar sua senha entre em contato com o setor responsável.</h1>
                     </div>
-
                 }
             </div>
         </div>
