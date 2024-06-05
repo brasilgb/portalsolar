@@ -60,7 +60,7 @@ const LinkApp = ({ title }: LinkProps) => {
             <div className="flex justify-center py-4 drop-shadow">
                 {icons(title)}
             </div>
-            <p className={`text-base text-center font-normal drop-shadow text-gray-600 ${textStyle(title).description}`}>{description(title)}</p>
+            <p className={`text-sm text-center font-normal uppercase drop-shadow text-gray-600 ${textStyle(title).description}`}>{description(title)}</p>
         </Link>
     )
 }

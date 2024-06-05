@@ -1,5 +1,4 @@
 'use client'
-import { Roboto } from 'next/font/google';
 import '@/styles/globals.css';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -13,7 +12,7 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
     const isPublicPage = checkIsPublicRoute(pathname!);
 
     return (
-        <div>
+        <>
             <head>
                 <title>Portal Grupo Solar</title>
             </head>
@@ -22,7 +21,7 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
                 {!isPublicPage && (
                     <PrivateRoute>
                         <div className={`flex min-h-screen flex-col bg-[#0071BC] bg-no-repeat bg-center bg-cover bg-[url('/images/login.png')]`}>
-                            <div className="flex w-full min-h-screen flex-col items-center justify-center bg-gray-900/40">
+                            <div className="flex w-full min-h-screen flex-col items-center justify-center bg-gray-900/30">
                                 <Header />
                                 <div className="flex-grow py-8 w-full px-4">
                                     {children}
@@ -33,6 +32,6 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
                     </PrivateRoute>
                 )}
             </AuthProvider>
-        </div>
+        </>
     );
 }
