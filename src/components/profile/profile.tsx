@@ -33,10 +33,10 @@ const Profile = () => {
                     onClick={toggle}
                 >
                     <div className="text-gray-700">
-                        <IoPerson color="#6d6a6a" size={20} />
+                        <IoPerson color="#F6F5FA" size={20} />
                     </div>
                     <div className="text-gray-700">
-                        <MdOutlineKeyboardArrowDown color="#6d6a6a" size={20} className={`duration-300 ${isOpen ? '-rotate-180' : 'rotate-0'}`} />
+                        <MdOutlineKeyboardArrowDown color="#F6F5FA" size={20} className={`duration-300 ${isOpen ? '-rotate-180' : 'rotate-0'}`} />
                     </div>
                 </button>
                 <div

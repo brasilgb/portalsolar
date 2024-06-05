@@ -5,14 +5,17 @@ import Profile from "../profile/profile"
 
 const Header = () => {
   return (
-    <div className="w-full flex items-center justify-between bg-gray-middle border-b border-white shadow-sm py-2 px-4">
-      <div>
-        <Logo />
+    //    <div className="w-full flex items-center justify-between bg-gray-middle border-b border-white shadow-sm py-2 px-4">
+    <header className={`w-full bg-blue-light px-2`}>
+      <div className="container py-1 mx-auto flex items-center justify-between h-16">
+        <div>
+          <Logo />
+        </div>
+        <div>
+          <Profile />
+        </div>
       </div>
-      <div>
-        <Profile />
-      </div>
-    </div>
+    </header>
   )
 }
 

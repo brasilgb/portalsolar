@@ -4,7 +4,7 @@ import Image from "next/image"
 
 const Logo = () => {
   return (
-    <Image src={require('@/assets/images/logo_grupo_blue.png')} alt={"Logo"} height={40} />
+    <Image src={require('@/assets/images/logo_grupo.png')} alt={"Logo"} height={40} />
   )
 }
 

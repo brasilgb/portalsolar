@@ -3,9 +3,11 @@ import React from 'react'
 import moment from "moment"
 const Footer = () => {
     return (
-        <div className="w-full py-1 bg-gray-light border-t border-white drop-shadow-md">
-            <p className="text-xs text-center text-gray-700">{moment().format("YYYY")} Solar Comércio e Agroindústria Ltda. Todos os direitos reservados. | Desenvolvido por TI - Sistemas | Grupo Solar</p>
-        </div>
+        <footer className="w-full flex items-center justify-center py-0.5 bg-blue-primary">
+        <p className="md:text-xs text-[8px] text-gray-50">
+          &copy; {moment().format("YYYY")} Solar Comércio e Agroindústria Ltda.
+        </p>
+      </footer>
     )
 }
 

@@ -27,23 +27,19 @@ const Home = () => {
   }, [userData, router]);
 
   return (
-    <div className="md:container m-auto md:grid md:grid-cols-5 md:gap-8 gap-4 flex flex-col justify-center">
-      {userData?.folders?.length === 1 
-      ? <div className="text-lg text-white ml-10 mt-10">Aguarde redirecionando <span className="text-xl animate-pulse">...</span></div>
-    :
-      userData?.folders?.map((lk: any, idx: number) => (
-        <Fragment key={idx}>
-          <LinkApp
-            bgColor="bg-gray-light"
-            title={lk.path}
-            titleColor="text-blue-primary"
-            text=""
-            textColor="text-blue-secundary"
-          />
-        </Fragment>
-      ))
-    }
-      
+    <div className="md:container m-auto md:grid md:grid-cols-5 md:gap-6 gap-4 flex flex-col justify-center">
+      {userData?.folders?.length === 1
+        ? <div className="text-lg text-white ml-10 mt-10">Aguarde redirecionando <span className="text-xl animate-pulse">...</span></div>
+        :
+        userData?.folders?.map((lk: any, idx: number) => (
+          <Fragment key={idx}>
+            <LinkApp
+              title={lk.path}
+            />
+          </Fragment>
+        ))
+      }
+
     </div>
   );
 

@@ -36,8 +36,8 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="bg-gray-100 rounded-md">
-            <div className="px-4 pt-8">
+        <div className="w-full sm:max-w-md px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300">
+            <div className="flex flex-col justify-center my-8">
                 <div className="w-[40%] m-auto">
                     <Image
                         src={require('@/assets/images/logo_grupo_blue.png')}
@@ -45,12 +45,12 @@ const LoginForm = () => {
                     />
                 </div>
                 <div className="flex justify-center md:mb-0 mb-2 md:mt-4">
-                    <h1 className="md:text-xl text-lg font-bold text-gray-400 mt-4">
+                    <h1 className="md:text-xl text-lg text-gray-500 mt-4 drop-shadow">
                         Bem vindo ao Portal Grupo Solar
                     </h1>
                 </div>
-                <div className="flex justify-center text-gray-400 md:mb-4">
-                    <h1 className="md:text-lg text-base text-center font-semibold">
+                <div className="flex justify-center text-gray-500 md:mb-4">
+                    <h1 className="md:text-lg text-sm text-center drop-shadow-md">
                         Faça login para acessar os serviços
                     </h1>
                 </div>
@@ -61,7 +61,7 @@ const LoginForm = () => {
                 }
                 <form action="" onSubmit={handleSubmit(handleLogin)}>
                     <div className="flex flex-col mt-3">
-                            <label htmlFor="alternative" className="label-form">Usuário</label>
+                        <label htmlFor="alternative" className="label-form">Usuário</label>
                         <div className="div-input relative">
                             <div className="absolute left-2 top-2">
                                 <IoPerson size="22" />
