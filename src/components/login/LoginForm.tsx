@@ -36,7 +36,7 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="w-full sm:max-w-md px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300">
+        <div className={`w-full sm:max-w-md px-4 ${resetPassword ? 'py-0' : 'py-8'} bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300`}>
             <div className="flex flex-col justify-center my-8">
                 <div className="w-[40%] m-auto">
                     <Image
@@ -55,7 +55,7 @@ const LoginForm = () => {
                     </h1>
                 </div>
             </div>
-            <div className="p-4 relative">
+            <div className="p-4">
                 {userNotExist &&
                     <div className="text-base text-red-600">{userNotExist}</div>
                 }
@@ -113,8 +113,9 @@ const LoginForm = () => {
                 </form>
                 <div onClick={() => setResetPassword(!resetPassword)} className="flex items-center justify-end mt-2 text-sm text-gray-500 underline hover:text-gray-600 cursor-pointer">Esqueci meu usuário e/ou senha</div>
                 {resetPassword &&
-                    <div className="absolute left-0 text-sm mt-2 bg-gray-50 p-2 rounded shadow border border-gray-300 text-gray-500">
-                        <div className="flex justify-end"><IoClose className="cursor-pointer" onClick={() => setResetPassword(false)} /></div>
+                    <div className="left-0 text-sm mt-2 bg-gray-50 p-2 rounded shadow border border-gray-300 text-gray-500 z-40">
+                        <div className="flex justify-end">
+                            <IoClose className="cursor-pointer" onClick={() => setResetPassword(false)} /></div>
                         <h1>Para recuperar sua senha entre em contato com o suporte do setor de TI Grupo Solar.</h1>
                     </div>
 
