@@ -20,7 +20,7 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
                 {isPublicPage && children}
                 {!isPublicPage && (
                     <PrivateRoute>
-                        <div className={`flex min-h-screen flex-col bg-[#0071BC] bg-no-repeat bg-center bg-cover bg-[url('/images/login.png')]`}>
+                        <div className={`flex min-h-screen flex-col bg-[#0071BC] bg-no-repeat bg-center bg-cover bg-[url('/images/lojas/login.png')]`}>
                             <div className="flex w-full min-h-screen flex-col items-center justify-center bg-gray-900/30">
                                 <Header />
                                 <div className="flex-grow py-8 w-full px-4">
