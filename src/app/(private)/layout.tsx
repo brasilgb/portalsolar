@@ -19,7 +19,7 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
     useLayoutEffect(() => {
         const isAuth = checkUserUrlAccess();
         if (!isAuth && pathname !== '/') {
-            redirect("/not-found")
+            redirect("https://portal.gruposolar.com.br/not-found")
         }
     }, []);
 
