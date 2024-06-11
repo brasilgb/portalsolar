@@ -4,17 +4,13 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { AuthProvider } from "@/contexts/AuthContext";
 import PrivateRoute from "@/components/privateroute";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { checkIsPublicRoute } from "@/functions/check-is-public-route";
-import { checkUserUrlAccess } from "@/functions/check-user-url-access";
+import { useLayoutEffect } from "react";
 
 export default function PrivateLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const isPublicPage = checkIsPublicRoute(pathname!);
-    
-    const router = useRouter();
-    let validUrl = checkUserUrlAccess();
-    if(!validUrl)  router.push('/');
 
     return (
         <>
