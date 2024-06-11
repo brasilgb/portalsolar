@@ -16,7 +16,7 @@ const notFound = (props: Props) => {
         <p className="text-sm font-medium text-center text-gray-500">Se você acha que deveria ver o conteúdo desta página entre em contato com o setor responsável!</p>
         <div>
           <Link
-            className="flex items-center justify-center bg-solar-blue-primary py-1 px-3 rounded-md mt-3 text-gray-50 shadow-md transition-colors duration-300 hover:bg-solar-blue-primary/90"
+            className="flex items-center justify-center bg-blue-primary py-1 px-3 rounded-md mt-3 text-gray-50 shadow-md transition-colors duration-300 hover:bg-blue-primary/90"
             href="/"
           >
             <IoArrowBack size={22} />
