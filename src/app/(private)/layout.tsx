@@ -15,7 +15,7 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
     const router = useRouter();
     useLayoutEffect(() => {
         const isAuth = checkUserUrlAccess();
-        if (!isAuth && pathname !== '/') {
+        if (!isAuth) {
             notFound();
         }
     }, []);
