@@ -13,12 +13,12 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
     const pathname = usePathname();
     const isPublicPage = checkIsPublicRoute(pathname!);
 
-    useLayoutEffect(() => {
-        const isAuth = checkUserUrlAccess();
-        if (!isAuth) {
-            redirect("/not-found")
-        }
-    }, []);
+    // useLayoutEffect(() => {
+    //     const isAuth = checkUserUrlAccess();
+    //     if (!isAuth) {
+    //         redirect("/not-found")
+    //     }
+    // }, []);
 
     return (
         <>
