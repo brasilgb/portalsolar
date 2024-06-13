@@ -1,4 +1,5 @@
 "use client";
+import { deleteCookie, getCookie, setCookie } from "cookies-next";
 import servicelogin from "@/libs/servicelogin";
 import { usePathname, useRouter } from "next/navigation";
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
@@ -13,14 +14,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [userNotExist, setUserNotExist] = useState<string>('');
 
   useEffect(() => {
-    const loadStorage = async () => {
-      const recoveredUser = localStorage.getItem('portal_user');
-      if (recoveredUser) {
-        setUser(JSON.parse(recoveredUser));
+    const cookiePortalAccess = async () => {
+      const cookieAccess = getCookie('portal_access');
+      if (cookieAccess) {
+        setUser(cookieAccess);
       }
     };
-    loadStorage();
+    cookiePortalAccess();
   }, []);
+
+
 
   const signIn = useCallback(async (data: any) => {
     setLoading(true);
@@ -43,10 +46,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           admGranja: admGranja,
           userSIN: userSIN,
         };
-        localStorage.setItem(
-          'portal_user',
-          JSON.stringify(userData),
-        );
+        setCookie("portal_access", userData);
         setUser(userData);
         return router.push('/');
       }).catch((err) => {
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, [router]);
 
   const signOut = () => {
-    localStorage.removeItem('portal_user');
+    deleteCookie('portal_access');
     setUser(null);
     router.push('/login');
   }

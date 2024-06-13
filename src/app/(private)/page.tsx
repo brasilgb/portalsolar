@@ -1,6 +1,7 @@
 'use client'
 
 import LinkApp from "@/components/linkapp";
+import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
@@ -9,13 +10,13 @@ const Home = () => {
   const [userData, setUserData] = useState<any>([]);
 
   useEffect(() => {
-    const loadStorage = async () => {
-      const recoveredUser = localStorage.getItem('portal_user');
+    const cookieAccess = async () => {
+      const recoveredUser = getCookie('portal_access');
       if (recoveredUser) {
         setUserData(JSON.parse(recoveredUser));
       }
     };
-    loadStorage();
+    cookieAccess();
   }, []);
 
   useEffect(() => {

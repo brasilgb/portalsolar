@@ -1,6 +1,6 @@
 'use client'
 import { useAuthContext } from "@/contexts/AuthContext";
-import Link from "next/link";
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import { IoExit, IoPerson } from 'react-icons/io5';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
@@ -11,13 +11,13 @@ const Profile = () => {
     const [userData, setUserData] = useState<any>([]);
 
     useEffect(() => {
-        const loadStorage = async () => {
-            const recoveredUser = localStorage.getItem('portal_user');
+        const cookieAccess = async () => {
+            const recoveredUser = getCookie('portal_access');
             if (recoveredUser) {
                 setUserData(JSON.parse(recoveredUser));
             }
         };
-        loadStorage();
+        cookieAccess();
     }, []);
 
     const toggle = () => {
