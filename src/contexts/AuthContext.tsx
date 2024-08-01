@@ -1,7 +1,7 @@
 "use client";
 import { deleteCookie, getCookie, setCookie } from "cookies-next";
 import servicelogin from "@/libs/servicelogin";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext({} as any);
@@ -23,19 +23,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     cookiePortalAccess();
   }, []);
 
-
-
   const signIn = useCallback(async (data: any) => {
     setLoading(true);
     await servicelogin.post('(LOG_USU_VALIDATE_USER)', data)
       .then((response) => {
-        const { success, userKey, userName, message, programs, folders, granja, admGranja, userSIN } = response.data.user;
+        const { success, userKey, userName, message, programs, folders, granja, admGranja, userSIN, filial, gerente, supervisor } = response.data.user;
         setLoading(false);
         if (!success) {
           setUserNotExist(message);
           return;
         }
-       
+
         let userData = {
           authenticated: success,
           userName: userName,
@@ -45,6 +43,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           granja: granja,
           admGranja: admGranja,
           userSIN: userSIN,
+          filial: filial,
+          gerente: gerente,
+          supervisor: supervisor,
         };
         setCookie("portal_access", userData);
         setUser(userData);

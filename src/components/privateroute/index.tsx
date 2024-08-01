@@ -3,7 +3,6 @@ import React, { ReactNode, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { checkUserAuthenticated } from "@/functions/check-user-authenticated";
 import { APP_ROUTES } from "@/app/constants/app-routes";
-import { checkUserUrlAccess } from "@/functions/check-user-url-access";
 
 interface PrivateRouteProps {
     children: ReactNode;
