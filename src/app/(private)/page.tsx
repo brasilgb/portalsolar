@@ -1,5 +1,4 @@
 'use client'
-
 import LinkApp from "@/components/linkapp";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";

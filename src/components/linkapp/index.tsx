@@ -5,6 +5,7 @@ import { FaRegChartBar } from "react-icons/fa";
 import { GiChicken, GiRooster } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { PiNotePencilFill } from "react-icons/pi";
+import { TbChartHistogram } from "react-icons/tb";
 
 interface LinkProps {
     title?: string;
@@ -20,6 +21,9 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'assinatura': text = 'Acompanhamento das assinaturas de contratos';
             break;
             case 'integrado': text = 'Controle de reporte diário, extrato e remuneração';
+            break;
+            case 'gerencial': text = 'Visualizações de dados referente as Lojas por filial';
+            break;
 
         };
         return text;
@@ -34,6 +38,9 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'assinatura': text = <PiNotePencilFill size={70} color="#4f8cb4" />;
             break;
             case 'integrado': text = <GiRooster size={70} color="#cc8903" />;
+            break;
+            case 'gerencial': text = <TbChartHistogram size={70} color="#cc8903" />;
+            break;
         };
         return text;
     };
@@ -59,6 +66,12 @@ const LinkApp = ({ title }: LinkProps) => {
                 "title": " text-orange-600",
                 "description": "text-gray-600"
             };
+            break;
+            case 'gerencial': text = {
+                "title": " text-orange-600",
+                "description": "text-gray-600"
+            };
+            break;
         };
         return text;
     };
