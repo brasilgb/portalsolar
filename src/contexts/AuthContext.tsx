@@ -55,9 +55,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       })
   }, [router]);
 
-  const signOut = () => {
+  const signOut = async() => {
     deleteCookie('portal_access');
     setUser(null);
+    await servicelogin.get('(LOG_USU_CLOSE_CONNECTION)');
     router.push('/login');
   }
 
