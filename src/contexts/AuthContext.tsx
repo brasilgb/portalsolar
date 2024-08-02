@@ -33,7 +33,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           setUserNotExist(message);
           return;
         }
-
         let userData = {
           authenticated: success,
           userName: userName,
@@ -52,10 +51,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         return router.push('/');
       }).catch((err) => {
         console.log(err);
-      })
+      });
+    await servicelogin.get('(LOG_USU_CLOSE_CONNECTION)');
   }, [router]);
 
-  const signOut = async() => {
+  const signOut = async () => {
     deleteCookie('portal_access');
     setUser(null);
     await servicelogin.get('(LOG_USU_CLOSE_CONNECTION)');
