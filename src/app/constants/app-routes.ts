@@ -6,5 +6,6 @@ export const APP_ROUTES = {
     },
     public: {
         login: '/login',
+        changepassword: '/changepassword',
     },
 };

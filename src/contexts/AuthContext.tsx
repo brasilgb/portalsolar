@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [userNotExist, setUserNotExist] = useState<string>('');
+  const [userAccess, setUserAccess] = useState<boolean>(false);
 
   useEffect(() => {
     const cookiePortalAccess = async () => {
@@ -27,32 +28,37 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setLoading(true);
     await servicelogin.post('(LOG_USU_VALIDATE_USER)', data)
       .then((response) => {
-        const { success, userKey, userName, message, programs, folders, granja, admGranja, userSIN, filial, gerente, supervisor } = response.data.user;
-        setLoading(false);
-        if (!success) {
-          setUserNotExist(message);
+        const { user } = response.data;
+        if (user.firstAccess) {
+          return router.push('/changepassword/'+user.firstAccess);
+        }
+        if (!user.success) {
+          setUserNotExist(user.message);
           return;
         }
         let userData = {
-          authenticated: success,
-          userName: userName,
-          token: userKey,
-          programs: programs,
-          folders: folders,
-          granja: granja,
-          admGranja: admGranja,
-          userSIN: userSIN,
-          filial: filial,
-          gerente: gerente,
-          supervisor: supervisor,
+          firstAccess: user.firstAccess,
+          authenticated: user.success,
+          userName: user.userName,
+          token: user.userKey,
+          programs: user.programs,
+          folders: user.folders,
+          granja: user.granja,
+          admGranja: user.admGranja,
+          userSIN: user.userSIN,
+          filial: user.filial,
+          gerente: user.gerente,
+          supervisor: user.supervisor,
         };
         setCookie("portal_access", userData);
         setUser(userData);
         return router.push('/');
       }).catch((err) => {
         console.log(err);
+      }).finally(async () => {
+        await servicelogin.get('(LOG_USU_CLOSE_CONNECTION)');
+        setLoading(false);
       });
-    await servicelogin.get('(LOG_USU_CLOSE_CONNECTION)');
   }, [router]);
 
   const signOut = async () => {
@@ -70,7 +76,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       signOut,
       loading,
       setLoading,
-      userNotExist
+      userNotExist,
+      userAccess
     }}>
       {children}
     </AuthContext.Provider>
