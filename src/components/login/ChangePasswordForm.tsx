@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { IoEye, IoEyeOff, IoLockClosed } from 'react-icons/io5'
+import { IoArrowBack, IoEye, IoEyeOff, IoLockClosed } from 'react-icons/io5'
 import { useAuthContext } from "@/contexts/AuthContext";
 import { CgSpinnerTwo } from "react-icons/cg";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface AccessProps {
     first: any;
@@ -15,6 +15,7 @@ interface AccessProps {
 }
 const ChangePasswordForm = (props: AccessProps) => {
     const access = props.first === 'true' ? true : false
+    const router = useRouter();
     const { changePassword, loading, userChanged } = useAuthContext();
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [resetPassword, setResetPassword] = useState<boolean>(false);
@@ -37,7 +38,7 @@ const ChangePasswordForm = (props: AccessProps) => {
     });
 
     const handleChangePassword = async (values: any) => {
-        const spass = await changePassword(values);
+        await changePassword(values);
     }
 
     return (
@@ -141,13 +142,13 @@ const ChangePasswordForm = (props: AccessProps) => {
                     </div>
                 </form>
             </div>
-            <div>
-                <Link
-                    className="flex items-center justify-end mt-2 text-sm text-gray-500 underline hover:text-gray-600 cursor-pointer"
-                    href="/"
+            <div className="flex justify-end">
+                <button
+                    className="flex items-center justify-center mt-2 text-sm text-gray-500 underline hover:text-gray-600 cursor-pointer"
+                    onClick={() => router.back()}
                 >
-                    Voltar ao login
-                </Link>
+                    <IoArrowBack size={18} /> Voltar
+                </button>
             </div>
         </div>
     );

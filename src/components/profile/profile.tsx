@@ -1,8 +1,9 @@
 'use client'
 import { useAuthContext } from "@/contexts/AuthContext";
 import { getCookie } from "cookies-next";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IoExit, IoPerson } from 'react-icons/io5';
+import { IoExit, IoKey, IoPerson } from 'react-icons/io5';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
 const Profile = () => {
@@ -49,6 +50,13 @@ const Profile = () => {
                         <span className="ml-1">{userData.userName}</span>
                     </span>
                     <span className="w-full border-b border-gray-200"></span>
+                    <Link
+                        className="text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
+                        href={`/changepassword?firstAccess=false&code=${userData.userCode}`}
+                    >
+                        <IoKey color="#6d6a6a" size={20} />
+                        <span className="ml-1">Alterar minha senha</span>
+                    </Link>
                     <button
                         className="text-gray-600 hover:text-gray-400 px-4 pt-2 flex items-center"
                         onClick={signOut}
@@ -56,7 +64,6 @@ const Profile = () => {
                         <IoExit color="#6d6a6a" size={20} />
                         <span className="ml-1">Sair</span>
                     </button>
-
                 </div>
             </div>
             {isOpen ? (
