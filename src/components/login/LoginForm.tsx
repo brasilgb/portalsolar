@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { IoClose, IoEye, IoEyeOff, IoHelpCircle, IoLockClosed, IoPerson } from 'react-icons/io5'
 import { useAuthContext } from "@/contexts/AuthContext";
 import { CgSpinnerTwo } from "react-icons/cg";
+import { useSearchParams } from "next/navigation";
 
 export const LoginValidate = z.object({
     alternative: z.string().min(1, 'Digite o usuário'),
@@ -20,6 +21,9 @@ const LoginForm = () => {
     const { signIn, loading, userNotExist } = useAuthContext();
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [resetPassword, setResetPassword] = useState<boolean>(false);
+    const searchParams = useSearchParams();
+    const search = searchParams.get('passwordChanged');
+    const changed = search === 'true' ? true : false;
 
     const { handleSubmit, register, formState: { errors } } = useForm<FormData>({
         defaultValues: {
@@ -37,23 +41,33 @@ const LoginForm = () => {
 
     return (
         <div className={`w-full sm:max-w-md px-4 ${resetPassword ? 'py-0' : 'py-8'} bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300`}>
-            <div className="flex flex-col justify-center my-8">
+            <div className="flex flex-col justify-center mt-8">
                 <div className="w-[40%] m-auto">
                     <Image
                         src={require('@/assets/images/logo_grupo_blue.png')}
                         alt={''}
                     />
                 </div>
-                <div className="flex justify-center md:mb-0 mb-2 md:mt-4">
+                <div className="flex justify-center md:mb-0 mb-2">
                     <h1 className="md:text-xl text-lg text-gray-500 mt-4 drop-shadow">
                         Bem vindo ao Portal Grupo Solar
                     </h1>
                 </div>
-                <div className="flex justify-center text-gray-500 md:mb-4">
+                <div className="flex justify-center text-gray-500">
                     <h1 className="md:text-lg text-sm text-center drop-shadow-md">
                         Faça login para acessar os serviços
                     </h1>
                 </div>
+                {changed &&
+                    <div className="flex flex-col items-center justify-center p-2 mt-4 mx-4 bg-blue-100 border border-white rounded-md">
+                        <h1 className="text-sm text-blue-400 font-bold text-center drop-shadow-md uppercase">
+                            Senha alterada
+                        </h1>
+                        <h1 className="md:px-4 text-xs text-gray-500 font-semibold text-center drop-shadow-md uppercase mt-2">
+                            Utilize a sua nova senha para acessar o Portal.
+                        </h1>
+                    </div>
+                }
             </div>
             <div className="p-4">
                 {userNotExist &&
@@ -92,7 +106,7 @@ const LoginForm = () => {
                                 placeholder="Digite sua senha"
                             />
                             <div onClick={() => setShowPassword(!showPassword)} className="absolute right-2 top-2 cursor-pointer">
-                                {showPassword ? <IoEye size="22" /> : <IoEyeOff size="22" />}
+                                {!showPassword ? <IoEye size="22" /> : <IoEyeOff size="22" />}
                             </div>
                         </div>
                         {errors.password?.message && (

@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [userNotExist, setUserNotExist] = useState<string>('');
-  const [userAccess, setUserAccess] = useState<boolean>(false);
+  const [userChanged, setUserChanged] = useState<string>('');
 
   useEffect(() => {
     const cookiePortalAccess = async () => {
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       .then((response) => {
         const { user } = response.data;
         if (user.firstAccess) {
-          return router.push('/changepassword/'+user.firstAccess);
+          return router.push(`/changepassword?firstAccess=${user.firstAccess}&code=${user.userCode}`);
         }
         if (!user.success) {
           setUserNotExist(user.message);
@@ -61,6 +61,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
   }, [router]);
 
+  const changePassword = useCallback(async (data: any) => {
+    setLoading(true);
+    await servicelogin.post('(LOG_USU_CHANGE_PASSWORD)', data)
+      .then((response) => {
+        const { success, message } = response.data.change;
+        console.log(success, message)
+        if (!success) {
+          setUserChanged(message);
+        }
+        if (success) {
+          return router.push(`/login?passwordChanged=true`);
+        }
+      }).catch((err) => {
+        console.log(err);
+      }).finally(() => setLoading(false))
+  }, []);
+
   const signOut = async () => {
     deleteCookie('portal_access');
     setUser(null);
@@ -77,7 +94,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       loading,
       setLoading,
       userNotExist,
-      userAccess
+      userChanged,
+      changePassword
     }}>
       {children}
     </AuthContext.Provider>
