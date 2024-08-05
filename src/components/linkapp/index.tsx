@@ -4,7 +4,7 @@ import React from 'react'
 import { FaRegChartBar } from "react-icons/fa";
 import { GiChicken, GiRooster } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { PiNotePencilFill } from "react-icons/pi";
+import { PiNotePencilFill, PiPresentationChart } from "react-icons/pi";
 import { TbChartHistogram } from "react-icons/tb";
 
 interface LinkProps {
@@ -24,6 +24,8 @@ const LinkApp = ({ title }: LinkProps) => {
             break;
             case 'gerencial': text = 'Visualizações de dados referente as Lojas por filial';
             break;
+            case 'apptv': text = 'Visualizações de dados para a TV Administrativo';
+            break;
 
         };
         return text;
@@ -40,6 +42,8 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'integrado': text = <GiRooster size={70} color="#cc8903" />;
             break;
             case 'gerencial': text = <TbChartHistogram size={70} color="#cc8903" />;
+            break;
+            case 'apptv': text = <PiPresentationChart size={70} color="#0284c7" />;
             break;
         };
         return text;
@@ -69,6 +73,11 @@ const LinkApp = ({ title }: LinkProps) => {
             break;
             case 'gerencial': text = {
                 "title": " text-orange-600",
+                "description": "text-gray-600"
+            };
+            break;
+            case 'apptv': text = {
+                "title": " text-amber-600",
                 "description": "text-gray-600"
             };
             break;
