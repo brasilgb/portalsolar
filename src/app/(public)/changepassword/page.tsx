@@ -9,7 +9,7 @@ const ChangePassword = () => {
   const codeAccess = searchParams.get('code');
 
   return (
-    <div className={`flex min-h-screen flex-col items-center justify-center bg-[#0071BC] bg-no-repeat bg-center bg-cover bg-[url('/images/lojas/login.png')]`}>
+    <div className={`flex min-h-screen flex-col items-center justify-center bg-[#0071BC] bg-no-repeat bg-center bg-cover bg-[url('/images/lojas/login.png')] animate__animated animate__fadeIn`}>
       <div className="w-full min-h-screen flex items-center justify-center bg-gray-900/40 px-2">
         <ChangePasswordForm first={firstAccess} code={codeAccess} />
       </div>

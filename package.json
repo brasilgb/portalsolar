@@ -13,6 +13,7 @@
     "dependencies": {
         "@hookform/resolvers": "^3.3.2",
         "@types/js-cookie": "^3.0.6",
+        "animate.css": "^4.1.1",
         "axios": "^1.6.0",
         "cookies-next": "^4.2.1",
         "moment": "^2.30.1",
