@@ -126,11 +126,11 @@ const LoginForm = () => {
                         </button>
                     </div>
                 </form>
-                <Link 
+                {/* <Link 
                 href="/passwordrecovery"
                 className="flex items-center justify-end mt-2 text-sm text-gray-500 underline hover:text-gray-600 cursor-pointer">
                     Esqueci minha senha
-                </Link>
+                </Link> */}
             </div>
         </div>
     );
