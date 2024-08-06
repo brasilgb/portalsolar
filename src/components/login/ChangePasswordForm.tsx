@@ -71,7 +71,7 @@ const ChangePasswordForm = (props: AccessProps) => {
                             Alteração de senha
                         </h1>
                         <h1 className="md:px-4 text-xs text-gray-500 font-semibold text-center drop-shadow-md uppercase mt-2">
-                            Digite a senha antiga, você deve digitar uma senha, com, no mínimo 5 caracteres
+                            Digite sua senha antiga e sua senha nova deve conter no mínimo 5 caracteres.
                         </h1>
                     </div>
                 }
