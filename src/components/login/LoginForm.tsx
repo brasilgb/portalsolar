@@ -8,6 +8,7 @@ import { IoClose, IoEye, IoEyeOff, IoHelpCircle, IoLockClosed, IoPerson } from '
 import { useAuthContext } from "@/contexts/AuthContext";
 import { CgSpinnerTwo } from "react-icons/cg";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export const LoginValidate = z.object({
     alternative: z.string().min(1, 'Digite o usuário'),
@@ -125,14 +126,11 @@ const LoginForm = () => {
                         </button>
                     </div>
                 </form>
-                <div onClick={() => setResetPassword(!resetPassword)} className="flex items-center justify-end mt-2 text-sm text-gray-500 underline hover:text-gray-600 cursor-pointer">Esqueci meu usuário e/ou senha</div>
-                {resetPassword &&
-                    <div className="left-0 text-sm mt-2 bg-gray-50 p-2 rounded shadow border border-gray-300 text-gray-500 z-40">
-                        <div className="flex justify-end">
-                            <IoClose className="cursor-pointer" onClick={() => setResetPassword(false)} /></div>
-                        <h1>Para recuperar sua senha entre em contato com o setor responsável.</h1>
-                    </div>
-                }
+                <Link 
+                href="/passwordrecovery"
+                className="flex items-center justify-end mt-2 text-sm text-gray-500 underline hover:text-gray-600 cursor-pointer">
+                    Esqueci minha senha
+                </Link>
             </div>
         </div>
     );

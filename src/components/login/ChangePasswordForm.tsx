@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { IoArrowBack, IoEye, IoEyeOff, IoLockClosed } from 'react-icons/io5'
+import { IoArrowBack, IoEye, IoEyeOff, IoKey } from 'react-icons/io5'
 import { useAuthContext } from "@/contexts/AuthContext";
 import { CgSpinnerTwo } from "react-icons/cg";
 import { useRouter } from "next/navigation";
@@ -90,7 +90,7 @@ const ChangePasswordForm = (props: AccessProps) => {
                             <label htmlFor="oldPassword" className="label-form">Senha anterior</label>
                             <div className="div-input relative">
                                 <div className="absolute left-2 top-2">
-                                    <IoLockClosed size="22" />
+                                    <IoKey size="22" />
                                 </div>
                                 <input
                                     className="input-form"
@@ -113,7 +113,7 @@ const ChangePasswordForm = (props: AccessProps) => {
                         <label htmlFor="newPassword" className="label-form">Nova senha</label>
                         <div className="div-input relative">
                             <div className="absolute left-2 top-2">
-                                <IoLockClosed size="22" />
+                                <IoKey size="22" />
                             </div>
                             <input
                                 className="input-form"

@@ -79,6 +79,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }).finally(() => setLoading(false))
   }, []);
 
+  const recoveryPassword = useCallback(async (data: any) => {
+    console.log(data);
+  }, []);
+
   const signOut = async () => {
     deleteCookie('portal_access');
     setUser(null);
@@ -96,7 +100,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setLoading,
       userNotExist,
       userChanged,
-      changePassword
+      changePassword,
+      recoveryPassword
     }}>
       {children}
     </AuthContext.Provider>
