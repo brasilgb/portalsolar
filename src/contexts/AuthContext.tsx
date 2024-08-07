@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         let userData = {
           firstAccess: user.firstAccess,
           authenticated: user.success,
+          permaneceConectado: user.permaneceConectado,
           userCode: user.userCode,
           userName: user.userName,
           token: user.userKey,
