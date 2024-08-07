@@ -9,7 +9,7 @@ import { IoKey } from "react-icons/io5";
 import Link from "next/link";
 import servicelogin from "@/libs/servicelogin";
 
-export const LoginValidate = z.object({
+export const LiberacaoValidate = z.object({
     userCode: z.any(),
     userName: z.string(),
     programCode: z.string().min(1, 'Digite o código do programa'),
@@ -17,7 +17,7 @@ export const LoginValidate = z.object({
     parameter: z.string().min(1, 'Digite o parâmetro para o cálculo'),
     releaseKey: z.number(),
 })
-type FormData = z.infer<typeof LoginValidate>;
+type FormData = z.infer<typeof LiberacaoValidate>;
 const Liberacao = () => {
     const { user, setLoading, loading } = useAuthContext();
     const [errorEvent, setErrorEvent] = useState('');
@@ -37,7 +37,7 @@ const Liberacao = () => {
             releaseKey: 0,
         },
         mode: 'onBlur',
-        resolver: zodResolver(LoginValidate)
+        resolver: zodResolver(LiberacaoValidate)
     });
 
 
