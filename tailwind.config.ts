@@ -23,6 +23,7 @@ const config: Config = {
                 'orange-middle': '#F5B025',
                 'orange-dark': '#EC6608',
                 "solar-green-light": "#A7C414",
+                "green-primary": '#bccf00',
             },
             
         },

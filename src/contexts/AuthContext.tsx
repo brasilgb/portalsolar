@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const cookiePortalAccess = async () => {
       const cookieAccess = getCookie('portal_access');
       if (cookieAccess) {
-        setUser(cookieAccess);
+        setUser(JSON.parse(cookieAccess));
       }
     };
     cookiePortalAccess();
@@ -63,6 +63,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
   }, [router]);
 
+
+  
   const changePassword = useCallback(async (data: any) => {
     setLoading(true);
     await servicelogin.post('(LOG_USU_CHANGE_PASSWORD)', data)

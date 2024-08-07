@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 import React from 'react'
-import { FaRegChartBar } from "react-icons/fa";
+import { FaRegChartBar, FaUserLock } from "react-icons/fa";
 import { GiChicken, GiRooster } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { PiNotePencilFill, PiPresentationChart } from "react-icons/pi";
@@ -26,6 +26,8 @@ const LinkApp = ({ title }: LinkProps) => {
             break;
             case 'apptv': text = 'Visualizações de dados para a TV Administrativo';
             break;
+            case 'liberacao': text = 'Liberação de eventos em programas';
+            break;
 
         };
         return text;
@@ -44,6 +46,8 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'gerencial': text = <TbChartHistogram size={70} color="#cc8903" />;
             break;
             case 'apptv': text = <PiPresentationChart size={70} color="#0284c7" />;
+            break;
+            case 'liberacao': text = <FaUserLock size={70} color="#c43660" />;
             break;
         };
         return text;
@@ -81,15 +85,21 @@ const LinkApp = ({ title }: LinkProps) => {
                 "description": "text-gray-600"
             };
             break;
+            case 'liberacao': text = {
+                "title": " text-cyan-600",
+                "description": "text-gray-600"
+            };
+            break;
         };
         return text;
     };
 
     return (
-        <Link className="w-full sm:max-w-md text-orange-600 px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300 duration-500 hover:scale-105 hover:shadow-lg"
+        <Link 
+        className="w-full sm:max-w-md text-orange-600 px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300 duration-500 hover:scale-105 hover:shadow-lg"
             href={`/${title}`}
         >
-            <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{title}</h1>
+            <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{title === 'liberacao' ? 'liberação': title}</h1>
             <div className="flex justify-center py-4 drop-shadow">
                 {icons(title)}
             </div>
