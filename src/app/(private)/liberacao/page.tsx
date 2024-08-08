@@ -47,7 +47,7 @@ const Liberacao = () => {
         setLoading(true);
         await servicelogin.post('(LOG_USU_VALIDATE_EVENT)', {
             "queryType": 1,
-            "userCode": Number(values.userCode),
+            "userCode": Number(user?.userCode),
             "programCode": Number(values.programCode),
             "eventCode": Number(values.eventCode),
             "parameter": Number(values.parameter),
