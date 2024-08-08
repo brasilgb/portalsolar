@@ -4,11 +4,10 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { IoClose, IoEye, IoEyeOff, IoHelpCircle, IoLockClosed, IoPerson } from 'react-icons/io5'
+import { IoEye, IoEyeOff, IoLockClosed, IoPerson } from 'react-icons/io5'
 import { useAuthContext } from "@/contexts/AuthContext";
 import { CgSpinnerTwo } from "react-icons/cg";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 
 export const LoginValidate = z.object({
     alternative: z.string().min(1, 'Digite o usuário'),

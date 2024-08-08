@@ -27,7 +27,7 @@ const Home = () => {
   }, [userData, router]);
 
   return (
-    <div className="md:container m-auto md:grid md:grid-cols-5 md:gap-6 gap-4 flex flex-col justify-center animate__animated animate__fadeIn">
+    <div className="md:container h-full m-auto md:grid md:grid-cols-5 md:p-6 p-2 md:gap-6 gap-4 flex flex-col justify-center animate__animated animate__fadeIn">
       {userData?.folders?.length === 1
         ? <div className="text-lg text-white ml-10 mt-10">Aguarde redirecionando <span className="text-xl animate-pulse">...</span></div>
         :
