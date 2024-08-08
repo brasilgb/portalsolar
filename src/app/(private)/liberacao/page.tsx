@@ -72,7 +72,7 @@ const Liberacao = () => {
     }
 
     return (
-        <div className="flex h-[85vh] md:m-6 m-2 items-center justify-center bg-gray-100 border border-white rounded-md shadow-md py-10 animate__animated animate__fadeIn">
+        <div className="flex md:h-[85vh] md:m-6 m-2 items-center justify-center bg-gray-100 border border-white rounded-md shadow-md py-10 animate__animated animate__fadeIn">
             <div className="border border-gray-200 p-8 bg-white rounded-md md:w-2/3">
                 <div className="flex items-center justify-start gap-2 mb-4 text-sm text-gray-500 font-bold border-b drop-shadow">
                     <IoKey />
@@ -173,7 +173,7 @@ const Liberacao = () => {
                                 className="btn-login"
                                 type="submit"
                             >
-                                {loading ? <span className="animate-spin"><CgSpinnerTwo size={20} /></span> : 'Gerar chave de liberação'}
+                                {loading ? <span className="animate-spin"><CgSpinnerTwo size={20} /></span> : <span>Gerar chave</span>}
                             </button>
                         </div>
                         <div className="flex flex-col mt-4">
