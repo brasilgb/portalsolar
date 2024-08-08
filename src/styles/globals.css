@@ -6,7 +6,10 @@ html {
 }
 @layer base {
     .btn-login {
-        @apply inline-flex justify-center rounded-md bg-blue-primary hover:bg-blue-secundary px-5 py-2 mt-5 font-semibold text-sm text-gray-50 transition-colors uppercase border-2 border-blue-secundary hover:border-blue-primary shadow;
+        @apply inline-flex justify-center rounded-md bg-blue-primary hover:bg-blue-primary/90 px-5 py-2 mt-5 font-semibold text-sm text-gray-50 transition-colors duration-300 uppercase border-2 border-blue-secundary hover:border-blue-secundary/90 shadow;
+    }
+    .btn-cancel {
+        @apply inline-flex justify-center rounded-md bg-red-400 hover:bg-red-400/90 px-5 py-2 mt-5 font-semibold text-sm text-gray-50 transition-colors duration-300 uppercase border-2 border-gray-50 hover:border-gray-50/90 shadow;
     }
     .error-message {
         @apply text-sm p-0.5 text-red-600;

@@ -63,8 +63,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
   }, [router]);
 
-
-  
   const changePassword = useCallback(async (data: any) => {
     setLoading(true);
     await servicelogin.post('(LOG_USU_CHANGE_PASSWORD)', data)
@@ -80,7 +78,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }).catch((err) => {
         console.log(err);
       }).finally(() => setLoading(false))
-  }, []);
+  }, [router]);
 
   const recoveryPassword = useCallback(async (data: any) => {
     console.log(data);
