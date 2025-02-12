@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 import React from 'react'
-import { FaRegChartBar, FaUserLock } from "react-icons/fa";
+import { FaRegChartBar, FaTruckMoving, FaUserLock } from "react-icons/fa";
 import { GiChicken, GiRooster } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { PiNotePencilFill, PiPresentationChart } from "react-icons/pi";
@@ -28,6 +28,8 @@ const LinkApp = ({ title }: LinkProps) => {
             break;
             case 'liberacao': text = 'Liberação de eventos em programas';
             break;
+            case 'frotas': text = 'Controle de veículos';
+            break;
 
         };
         return text;
@@ -48,6 +50,8 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'apptv': text = <PiPresentationChart size={70} color="#0284c7" />;
             break;
             case 'liberacao': text = <FaUserLock size={70} color="#c43660" />;
+            break;
+            case 'frotas': text = <FaTruckMoving size={70} color="#19A873" />;
             break;
         };
         return text;
@@ -87,6 +91,11 @@ const LinkApp = ({ title }: LinkProps) => {
             break;
             case 'liberacao': text = {
                 "title": " text-cyan-600",
+                "description": "text-gray-600"
+            };
+            break;
+            case 'frotas': text = {
+                "title": " text-green-600",
                 "description": "text-gray-600"
             };
             break;
