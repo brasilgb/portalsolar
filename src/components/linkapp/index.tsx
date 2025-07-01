@@ -135,10 +135,9 @@ const LinkApp = ({ title, type }: LinkProps) => {
             <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{traductions(title)}</h1>
             <div className="flex justify-center py-4 drop-shadow">
                 {title ? icons(title) : ''}
-                {!title && type === 'uevo'
-                    ? <img src="images/logo_uevo.png" alt="uêvo" className="w-36 h-16"/>
-                    : <img src="images/logo_naturovos.png" alt="Naturovos" className="w-26 h-16"/>
-                }
+                {!title && type === 'uevo' && <img src="images/logo_uevo.png" alt="uêvo" className="w-36 h-16"/>}
+                {!title && type === 'naturovos' && <img src="images/logo_naturovos.png" alt="Naturovos" className="w-26 h-16"/>}
+                
             </div>
             <p className={`text-sm text-center font-semibold uppercase drop-shadow-md text-gray-500 ${textStyle(title).description}`}>{description(title)}</p>
         </Link>
