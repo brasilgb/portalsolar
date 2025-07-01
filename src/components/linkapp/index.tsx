@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 import React from 'react'
@@ -135,8 +136,8 @@ const LinkApp = ({ title, type }: LinkProps) => {
             <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{traductions(title)}</h1>
             <div className="flex justify-center py-4 drop-shadow">
                 {title ? icons(title) : ''}
-                {type === 'uevo' && <img src="images/logo_uevo.png" alt="uêvo" className="w-36 h-16"/>}
-                {type === 'naturovos' && <img src="images/logo_naturovos.png" alt="Naturovos" className="w-26 h-16"/>}
+                {type === 'uevo' && <Image src={require('@/assets/images/logo_uevo.png')} alt={"uêvo"} height={60} />}
+                {type === 'naturovos' && <Image src={require('@/assets/images/logo_naturovos.png')} alt="Naturovos" height={60} />}
                 
             </div>
             <p className={`text-sm text-center font-semibold uppercase drop-shadow-md text-gray-500 ${textStyle(title).description}`}>{description(title)}</p>
