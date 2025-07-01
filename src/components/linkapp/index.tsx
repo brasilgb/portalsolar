@@ -9,8 +9,9 @@ import { TbChartHistogram } from "react-icons/tb";
 
 interface LinkProps {
     title?: string;
+    type?: string;
 }
-const LinkApp = ({ title }: LinkProps) => {
+const LinkApp = ({ title, type }: LinkProps) => {
 
     const description = (text: string | undefined) => {
         switch (text) {
@@ -19,17 +20,19 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'ecommerce': text = 'Operações relacionadas ao ecommerce';
                 break;
             case 'assinatura': text = 'Acompanhamento das assinaturas de contratos';
-            break;
+                break;
             case 'integrado': text = 'Controle de reporte diário, extrato e remuneração';
-            break;
+                break;
             case 'gerencial': text = 'Visualizações de dados referente as Lojas por filial';
-            break;
+                break;
             case 'apptv': text = 'Visualizações de dados para a TV Administrativo';
-            break;
+                break;
             case 'liberacao': text = 'Liberação de eventos em programas';
-            break;
+                break;
             case 'frotas': text = 'Controle de veículos';
-            break;
+                break;
+            case 'representatives': text = '';
+                break;
 
         };
         return text;
@@ -42,17 +45,19 @@ const LinkApp = ({ title }: LinkProps) => {
             case 'ecommerce': text = <MdOutlineShoppingCart size={70} color="#b4994e" />;
                 break;
             case 'assinatura': text = <PiNotePencilFill size={70} color="#4f8cb4" />;
-            break;
+                break;
             case 'integrado': text = <GiRooster size={70} color="#cc8903" />;
-            break;
+                break;
             case 'gerencial': text = <TbChartHistogram size={70} color="#cc8903" />;
-            break;
+                break;
             case 'apptv': text = <PiPresentationChart size={70} color="#0284c7" />;
-            break;
+                break;
             case 'liberacao': text = <FaUserLock size={70} color="#c43660" />;
-            break;
+                break;
             case 'frotas': text = <FaTruckMoving size={70} color="#19A873" />;
-            break;
+                break;
+            case 'representatives': text = null;
+                break;
         };
         return text;
     };
@@ -73,44 +78,67 @@ const LinkApp = ({ title }: LinkProps) => {
                 "title": "text-red-500",
                 "description": "text-gray-600"
             };
-            break;
+                break;
             case 'integrado': text = {
                 "title": " text-orange-600",
                 "description": "text-gray-600"
             };
-            break;
+                break;
             case 'gerencial': text = {
                 "title": " text-orange-600",
                 "description": "text-gray-600"
             };
-            break;
+                break;
             case 'apptv': text = {
                 "title": " text-amber-600",
                 "description": "text-gray-600"
             };
-            break;
+                break;
             case 'liberacao': text = {
                 "title": " text-cyan-600",
                 "description": "text-gray-600"
             };
-            break;
+                break;
             case 'frotas': text = {
                 "title": " text-green-600",
                 "description": "text-gray-600"
             };
-            break;
+                break;
+            case 'representatives': text = {
+                "title": " text-green-600",
+                "description": "text-gray-600"
+            };
+                break;
         };
         return text;
     };
 
+    const traductions = (title: string | undefined) => {
+        switch (title) {
+            case 'bi3': return 'BI3';
+            case 'ecommerce': return 'E-commerce';
+            case 'assinatura': return 'Assinatura';
+            case 'integrado': return 'Integrado';
+            case 'gerencial': return 'Gerencial';
+            case 'apptv': return 'App TV';
+            case 'liberacao': return 'Liberação';
+            case 'frotas': return 'Frotas';
+            case 'representatives': return 'Representantes';
+            default: return title;
+        }
+    }
     return (
-        <Link 
-        className="w-full sm:max-w-md text-orange-600 px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300 duration-500 hover:scale-105 hover:shadow-lg"
+        <Link
+            className="w-full sm:max-w-md text-orange-600 px-4 py-8 bg-gradient-to-t from-gray-200/80 via-gray-100/90 to-gray-200/80 shadow-md overflow-hidden rounded-md border-2 border-gray-300 duration-500 hover:scale-105 hover:shadow-lg"
             href={`/${title}`}
         >
-            <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{title === 'liberacao' ? 'liberação': title}</h1>
+            <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{traductions(title)}</h1>
             <div className="flex justify-center py-4 drop-shadow">
-                {icons(title)}
+                {title ? icons(title) : ''}
+                {type === 'uevo'
+                    ? <img src="images/logo_uevo.png" alt="uêvo" className="w-36 h-16"/>
+                    : <img src="images/logo_naturovos.png" alt="Naturovos" className="w-26 h-16"/>
+                }
             </div>
             <p className={`text-sm text-center font-semibold uppercase drop-shadow-md text-gray-500 ${textStyle(title).description}`}>{description(title)}</p>
         </Link>

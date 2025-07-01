@@ -51,6 +51,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           filial: user.filial,
           gerente: user.gerente,
           supervisor: user.supervisor,
+          representative: user.representative
         };
         setCookie("portal_access", userData);
         setUser(userData);
