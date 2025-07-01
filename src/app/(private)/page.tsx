@@ -18,13 +18,13 @@ const Home = () => {
     cookieAccess();
   }, []);
 
-  // useEffect(() => {
-  //   let numfolder = userData?.folders?.length
-  //   if (numfolder === 1) {
-  //     let path = userData?.folders[0].path;
-  //     router.push(`/${path}`);
-  //   }
-  // }, [userData, router]);
+  useEffect(() => {
+    let numfolder = userData?.folders?.length
+    if (numfolder === 1) {
+      let path = userData?.folders[0].path;
+      router.push(`/${path}`);
+    }
+  }, [userData, router]);
 
   return (
     <div className="md:container h-full m-auto md:grid md:grid-cols-5 md:p-6 p-2 md:gap-6 gap-4 flex flex-col justify-center animate__animated animate__fadeIn">
