@@ -135,7 +135,7 @@ const LinkApp = ({ title, type }: LinkProps) => {
             <h1 className={`text-2xl uppercase text-center font-bold drop-shadow ${textStyle(title).title}`}>{traductions(title)}</h1>
             <div className="flex justify-center py-4 drop-shadow">
                 {title ? icons(title) : ''}
-                {type === 'uevo'
+                {!title && type === 'uevo'
                     ? <img src="images/logo_uevo.png" alt="uêvo" className="w-36 h-16"/>
                     : <img src="images/logo_naturovos.png" alt="Naturovos" className="w-26 h-16"/>
                 }
