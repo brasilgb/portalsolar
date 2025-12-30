@@ -117,7 +117,7 @@ const LinkApp = ({ title, type }: LinkProps) => {
                 break;
             case 'nfsolution': text = {
                 "title": " text-orange-dark",
-                "description": "text-orange-dark/80"
+                "description": "text-gray-600"
             };
                 break;
         };
