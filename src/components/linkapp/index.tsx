@@ -60,7 +60,7 @@ const LinkApp = ({ title, type }: LinkProps) => {
                 break;
             case 'frotas': text = <FaTruckMoving size={70} color="#19A873" />;
                 break;
-            case 'nfsolution': text = <BsFiletypeXml  size={70} color="#19A873" />;
+            case 'nfsolution': text = <BsFiletypeXml  size={70} color="#020202" />;
                 break;
             case 'representatives': text = null;
                 break;
@@ -116,8 +116,8 @@ const LinkApp = ({ title, type }: LinkProps) => {
             };
                 break;
             case 'nfsolution': text = {
-                "title": " text-sky-800",
-                "description": "text-sky-600"
+                "title": " text-yellow-dark",
+                "description": "text-yellow-dark/80"
             };
                 break;
         };
