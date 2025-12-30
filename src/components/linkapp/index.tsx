@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 import React from 'react'
+import { BsFiletypeXml } from "react-icons/bs";
 import { FaRegChartBar, FaTruckMoving, FaUserLock } from "react-icons/fa";
 import { GiChicken, GiRooster } from "react-icons/gi";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -32,6 +33,8 @@ const LinkApp = ({ title, type }: LinkProps) => {
                 break;
             case 'frotas': text = 'Controle de veículos';
                 break;
+            case 'nfsolution': text = 'Controle de Notas Fiscais';
+                break;
             case 'representatives': text = '';
                 break;
 
@@ -56,6 +59,8 @@ const LinkApp = ({ title, type }: LinkProps) => {
             case 'liberacao': text = <FaUserLock size={70} color="#c43660" />;
                 break;
             case 'frotas': text = <FaTruckMoving size={70} color="#19A873" />;
+                break;
+            case 'nfsolution': text = <BsFiletypeXml  size={70} color="#19A873" />;
                 break;
             case 'representatives': text = null;
                 break;
@@ -106,8 +111,8 @@ const LinkApp = ({ title, type }: LinkProps) => {
             };
                 break;
             case 'representatives': text = {
-                "title": " text-gray-800",
-                "description": "text-gray-600"
+                "title": " text-sky-800",
+                "description": "text-sky-600"
             };
                 break;
         };
@@ -125,6 +130,7 @@ const LinkApp = ({ title, type }: LinkProps) => {
             case 'liberacao': return 'Liberação';
             case 'frotas': return 'Frotas';
             case 'representatives': return 'Representantes';
+            case 'BsFiletypeXml': return 'NF Solution';
             default: return title;
         }
     }

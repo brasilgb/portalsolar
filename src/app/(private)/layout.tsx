@@ -6,7 +6,6 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import PrivateRoute from "@/components/privateroute";
 import { usePathname } from "next/navigation";
 import { checkIsPublicRoute } from "@/functions/check-is-public-route";
-import { useLayoutEffect } from "react";
 
 export default function PrivateLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
