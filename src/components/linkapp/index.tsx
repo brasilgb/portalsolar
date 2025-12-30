@@ -111,6 +111,11 @@ const LinkApp = ({ title, type }: LinkProps) => {
             };
                 break;
             case 'representatives': text = {
+                "title": " text-gray-800",
+                "description": "text-gray-600"
+            };
+                break;
+            case 'nfsolution': text = {
                 "title": " text-sky-800",
                 "description": "text-sky-600"
             };
@@ -130,7 +135,7 @@ const LinkApp = ({ title, type }: LinkProps) => {
             case 'liberacao': return 'Liberação';
             case 'frotas': return 'Frotas';
             case 'representatives': return 'Representantes';
-            case 'BsFiletypeXml': return 'NF Solution';
+            case 'nfsolution': return 'NF Solution';
             default: return title;
         }
     }
