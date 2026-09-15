@@ -5,8 +5,7 @@ import Profile from "../profile/profile"
 
 const Header = () => {
   return (
-    //    <div className="w-full flex items-center justify-between bg-gray-middle border-b border-white shadow-sm py-2 px-4">
-    <header className={`w-full bg-blue-primary px-2 shadow-md z-40`}>
+    <header className={`w-full bg-solar-500 px-2 shadow-md z-40`}>
       <div className="container py-1 mx-auto flex items-center justify-between h-16">
         <div>
           <Logo />

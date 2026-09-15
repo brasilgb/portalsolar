@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <div className="md:container h-full m-auto md:grid md:grid-cols-5 md:p-6 p-2 md:gap-6 gap-4 flex flex-col justify-center animate__animated animate__fadeIn">
       {userData?.folders?.length === 1
-        ? <div className="text-lg text-white ml-10 mt-10">Aguarde redirecionando <span className="text-xl animate-pulse">...</span></div>
+        ? <div className="text-lg text-gray-600 ml-10 mt-10">Aguarde redirecionando <span className="text-xl animate-pulse">...</span></div>
         :
         userData?.folders?.map((lk: any, idx: number) => (
           <Fragment key={idx}>

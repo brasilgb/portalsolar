@@ -6,7 +6,7 @@ html {
 }
 @layer base {
     .btn-login {
-        @apply inline-flex justify-center rounded-md bg-blue-primary hover:bg-blue-primary/90 px-5 py-2 mt-5 font-semibold text-sm text-gray-50 transition-colors duration-300 uppercase border-2 border-blue-secundary hover:border-blue-secundary/90 shadow;
+        @apply inline-flex justify-center items-center rounded-md bg-solar-500 hover:bg-solar-400 px-5 py-2.5 mt-5 font-semibold text-sm text-black transition-colors duration-300 uppercase border-2 border-solar-600 hover:border-solar-500 shadow disabled:opacity-60 disabled:cursor-not-allowed;
     }
     .btn-cancel {
         @apply inline-flex justify-center rounded-md bg-red-400 hover:bg-red-400/90 px-5 py-2 mt-5 font-semibold text-sm text-gray-50 transition-colors duration-300 uppercase border-2 border-gray-50 hover:border-gray-50/90 shadow;
@@ -18,7 +18,7 @@ html {
         @apply text-base text-gray-500 font-medium;
     }
     .div-input {
-        @apply rounded-md px-0 bg-gray-50 text-base text-gray-500 border border-white shadow;
+        @apply rounded-md px-0 bg-gray-50 text-base text-gray-500 border border-white shadow transition-shadow duration-200 focus-within:ring-2 focus-within:ring-solar-500 focus-within:border-solar-500;
     }
     .input-form {
         @apply text-base py-2 outline-none border-none w-full bg-gray-50 px-10;

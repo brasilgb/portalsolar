@@ -30,14 +30,14 @@ const Profile = () => {
         <>
             <div className="relative">
                 <button
-                    className="flex items-center justify-between p-2"
+                    className="flex items-center justify-between p-2 rounded-md hover:bg-black/10 transition-colors"
                     onClick={toggle}
                 >
                     <div className="text-gray-700">
-                        <IoPerson color="#F6F5FA" size={20} />
+                        <IoPerson color="#000000" size={20} />
                     </div>
                     <div className="text-gray-700">
-                        <MdOutlineKeyboardArrowDown color="#F6F5FA" size={20} className={`duration-300 ${isOpen ? '-rotate-180' : 'rotate-0'}`} />
+                        <MdOutlineKeyboardArrowDown color="#000000" size={20} className={`duration-300 ${isOpen ? '-rotate-180' : 'rotate-0'}`} />
                     </div>
                 </button>
                 <div
