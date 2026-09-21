@@ -1,5 +1,5 @@
 const KEY = 'mapsAddressExtractorRecords';
-const LOCATION_PAGE_URL = 'http://localhost:3000/location/';
+const LOCATION_PAGE_URL = 'https://portal.gruposolar.com.br/location';
 const $ = id => document.getElementById(id);
 
 async function load() {
