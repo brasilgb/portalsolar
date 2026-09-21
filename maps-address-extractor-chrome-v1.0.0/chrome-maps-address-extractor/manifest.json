@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Maps Address Extractor",
+  "version": "1.0.0",
+  "description": "Captura endereço, coordenadas e imagem da empresa aberta no Google Maps e lista os registros.",
+  "permissions": ["storage", "activeTab", "tabs"],
+  "host_permissions": ["https://www.google.com/maps/*", "https://www.google.com.br/maps/*"],
+  "action": {
+    "default_title": "Maps Address Extractor",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/maps/*", "https://www.google.com.br/maps/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

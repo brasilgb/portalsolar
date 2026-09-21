@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maps Address Extractor</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main>
+    <h1>Maps Address Extractor</h1>
+    <p class="muted">Abra uma empresa no Google Maps, capture e liste os registros.</p>
+
+    <button id="capture" class="primary">Capturar empresa atual</button>
+    <div id="status"></div>
+
+    <section>
+      <div class="row">
+        <strong>Registros salvos</strong>
+        <span id="count">0</span>
+      </div>
+      <div id="list" class="list"></div>
+    </section>
+
+    <div class="actions">
+      <button id="list-records">Listar capturados</button>
+      <button id="clear" class="danger">Limpar lista</button>
+    </div>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

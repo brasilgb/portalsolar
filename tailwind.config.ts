@@ -30,8 +30,6 @@ const config: Config = {
                 'blue-primary': '#154295',
                 'blue-secundary': '#1452bc',
                 'blue-light': '#00AEEF',
-                'yellow-dark': '#F18800',
-                'yellow-light': '#FFD100',
                 'gray-dark': '#F1F1F1',
                 'gray-middle': '#F8F8F8',
                 'gray-light': '#FAFAFA',
