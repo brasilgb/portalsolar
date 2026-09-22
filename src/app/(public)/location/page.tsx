@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   IoCopyOutline,
+  IoDownloadOutline,
   IoImageOutline,
   IoLocationOutline,
   IoMapOutline,
@@ -12,6 +13,7 @@ import {
 } from 'react-icons/io5';
 
 const STORAGE_KEY = 'maps-address-extractor-captures';
+const EXTENSION_DOWNLOAD_URL = '/location/maps-address-extractor-chrome-v1.0.0.rar';
 
 type RawCapture = Record<string, unknown>;
 
@@ -163,6 +165,14 @@ export default function LocationPage() {
           </div>
 
           <div className="flex flex-wrap gap-2">
+            <a
+              href={EXTENSION_DOWNLOAD_URL}
+              download
+              className="inline-flex h-10 items-center gap-2 rounded-lg bg-teal-700 px-4 text-sm font-bold text-white shadow-sm transition hover:bg-teal-800"
+            >
+              <IoDownloadOutline size={18} />
+              Baixar extensão
+            </a>
             <button
               type="button"
               onClick={copyJson}
